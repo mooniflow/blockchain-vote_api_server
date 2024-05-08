@@ -5,17 +5,11 @@ from app import api
 user_model = api.model('User', {
     'UID': fields.Integer(required=False, description='UID, auto_increment'),
     'Code': fields.Integer(required=True, description='student identification number'),
-    'Id': fields.String(required=True, description='User ID'),
+    'Address': fields.String(required=True, description='kernel address account'),
     'Dep': fields.String(required=False, ddescription='Department'),
     'UType': fields.Integer(required=False, ddescription='User type')
 })
 
-# Address 모델 정의
-address_model = api.model('Address', {
-    'UID': fields.Integer(required=True, description='User ID'),
-    'VID': fields.Integer(required=True, description='Vote ID'),
-    'Adr': fields.String(description='Address')
-})
 
 # Candidate 모델 정의
 candidate_model = api.model('Candidate', {

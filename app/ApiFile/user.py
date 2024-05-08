@@ -19,9 +19,9 @@ class UserDetail(Resource):
     @user_ns.expect(user_model)
     @user_ns.marshal_with(user_model, code=201)
     def put(self, code):
-        Id_data = request.json
+        Address_data = request.json
         user = User.query.filter_by(Code=code).first()
-        user.Id = Id_data['Id']
+        user.Address = Address_data['Address']
         db.session.commit()
 
         return user, 201
