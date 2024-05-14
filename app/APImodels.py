@@ -22,6 +22,7 @@ canddetail_model = api.model('CandDetails', {
     'name': fields.String,
     'department': fields.String,
     'student_id': fields.Integer,
+    'img_url': fields.String,
     'profile_lists': fields.List(fields.String),
     'content_lists': fields.List(fields.String),
     'talk': fields.String
