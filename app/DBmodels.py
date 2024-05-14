@@ -3,18 +3,12 @@ from app import db
 class User(db.Model):
     UID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Code = db.Column(db.Integer)
-    Id = db.Column(db.String(255))
-    Dep = db.Column(db.String(255))
+    Address = db.Column(db.String(300))
+    Dep = db.Column(db.String(300))
     UType = db.Column(db.Integer)
+    Sold = db.Column(db.String(300))
 
-class Address(db.Model):
-    UID = db.Column(db.Integer, primary_key=True)
-    VID = db.Column(db.Integer, primary_key=True)
-    Adr = db.Column(db.String(255))
-    __table_args__ = (
-        db.ForeignKeyConstraint(['UID'], ['user.UID']),
-        db.ForeignKeyConstraint(['VID'], ['vote.VID'])
-    )
+
 
 class Candidate(db.Model):
     CID = db.Column(db.Integer, primary_key=True)

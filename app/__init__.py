@@ -21,10 +21,9 @@ api = Api(app)
 from app.ApiFile.user import user_ns
 from app.ApiFile.vote import vote_ns
 from app.ApiFile.vote_details import vote_detail_ns
-from app.ApiFile.address import address_ns
 
 api.add_namespace(user_ns)
 api.add_namespace(vote_ns)
 api.add_namespace(vote_detail_ns)
-api.add_namespace(address_ns)
+
 
