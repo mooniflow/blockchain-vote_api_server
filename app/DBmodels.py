@@ -6,7 +6,7 @@ class User(db.Model):
     Address = db.Column(db.String(300))
     Dep = db.Column(db.String(300))
     UType = db.Column(db.Integer)
-    Sold = db.Column(db.String(300))
+ 
 
 class Candidate(db.Model):
     CID = db.Column(db.Integer, primary_key=True)
