@@ -8,8 +8,6 @@ class User(db.Model):
     UType = db.Column(db.Integer)
     Sold = db.Column(db.String(300))
 
-
-
 class Candidate(db.Model):
     CID = db.Column(db.Integer, primary_key=True)
     VID = db.Column(db.Integer, db.ForeignKey('vote.VID'))
