@@ -22,14 +22,14 @@ class Candidate(db.Model):
     UID = db.Column(db.Integer, db.ForeignKey('user.UID'))
     Name = db.Column(db.String(255))
     Img = db.Column(db.String(255))
-    Profile = db.Column(db.String(255))
+    Profile = db.Column(db.Text)
+    Talk = db.Column(db.Text)
 
 class Promise(db.Model):
     PID = db.Column(db.Integer, primary_key=True)
     Content = db.Column(db.Text)
 
 class CandProm(db.Model):
-  
     CID = db.Column(db.Integer, db.ForeignKey('candidate.CID'), primary_key=True)
     PID = db.Column(db.Integer, db.ForeignKey('promise.PID'), primary_key=True)
 

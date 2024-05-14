@@ -20,17 +20,22 @@ address_model = api.model('Address', {
 # Candidate 모델 정의
 candidate_model = api.model('Candidate', {
     'CID': fields.Integer(required=True, description='Candidate ID'),
-    'VID': fields.Integer(description='Vote ID'),
-    'UID': fields.Integer(description='User ID'),
-    'Name': fields.String(description='Candidate Name'),
-    'Img': fields.String(description='Image URL'),
-    'Profile': fields.String(description='Candidate Profile')
+    'VID': fields.Integer(description='Vote ID')
 })
 
+# CandDetail 모델 정의
+canddetail_model = api.model('CandDetails', {
+    'name': fields.String,
+    'department': fields.String,
+    'student_id': fields.Integer,
+    'profile_lists': fields.List(fields.String),
+    'content_lists': fields.List(fields.String),
+    'talk': fields.String
+})
 # Promise 모델 정의
 promise_model = api.model('Promise', {
     'PID': fields.Integer(required=True, description='Promise ID'),
-    'Content': fields.String(description='Promise Content')
+    'Content': fields.List(fields.String, description='Promise Content')
 })
 
 # CandProm 모델 정의

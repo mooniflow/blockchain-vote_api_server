@@ -1,7 +1,7 @@
 from flask_restx import Namespace, Resource, fields, marshal
 from flask import request
-from ..APImodels import candidate_model, promise_model, result_model
-from ..DBmodels import Vote, Candidate, Promise, CandProm, Result
+from ..APImodels import candidate_model, promise_model, result_model, canddetail_model
+from ..DBmodels import Vote, Candidate, Promise, CandProm, Result, User
 from flask import abort
 
 vote_detail_ns = Namespace('vote_details', description='Vote details related operations')
@@ -19,10 +19,16 @@ class Candidates(Resource):
 
 
 @vote_detail_ns.route('/<int:vid>/<int:cid>')
-class Promises(Resource):
-    @vote_detail_ns.marshal_list_with(promise_model)
+class CandDetails(Resource):
+    @vote_detail_ns.marshal_with(canddetail_model)
     def get(self, vid, cid):
-        # 특정 후보자의 공약을 가져옴
+        cand = Candidate.query.get(cid)
+        uid = cand.UID      
+        user = User.query.get(uid)
+        # 후보자 약력 리스트화
+        profile_lists = cand.Profile.split('/')
+        
+        # 특정 후보자의 공약을 가져와 리스트화
         pid_objs = CandProm.query.filter_by(CID=cid).all()
         pids = [pid_obj.PID for pid_obj in pid_objs]
         
@@ -33,8 +39,16 @@ class Promises(Resource):
         if not promises:
             abort(404, message="No promises found for the candidate") 
         
-        # 공약의 내용을 반환
-        return promises, 200
+        content_lists = [promise.Content for promise in promises]
+
+        return {
+            'name': cand.Name,
+            'department': user.Dep,
+            'student_id': user.Code,
+            'profile_lists': profile_lists,
+            'content_lists': content_lists,
+            'talk': cand.Talk
+        }, 200
 
 @vote_detail_ns.route('/<int:vid>/results')
 class VoteResults(Resource):
