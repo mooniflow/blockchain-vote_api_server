@@ -6,8 +6,17 @@ user_model = api.model('User', {
     'UID': fields.Integer(required=False, description='UID, auto_increment'),
     'Code': fields.Integer(required=True, description='student identification number'),
     'Address': fields.String(required=True, description='kernel address account'),
+    'Salt': fields.String(required=True, description='Salt for security'),
     'Dep': fields.String(required=False, ddescription='Department'),
     'UType': fields.Integer(required=False, ddescription='User type')
+})
+
+address_model = api.model('Address', {
+    'Address': fields.String(required=True, description='kernel address account')
+})
+
+salt_model = api.model('Salt', {
+    'Salt': fields.String(required=True, description='Salt for security')
 })
 
 

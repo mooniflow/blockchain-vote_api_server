@@ -4,6 +4,7 @@ class User(db.Model):
     UID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Code = db.Column(db.Integer)
     Address = db.Column(db.String(300))
+    Salt = db.Column(db.String(300))
     Dep = db.Column(db.String(300))
     UType = db.Column(db.Integer)
  
