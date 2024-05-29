@@ -45,6 +45,7 @@ class CandDetails(Resource):
             'name': cand.Name,
             'department': user.Dep,
             'student_id': user.Code,
+            'img_url': cand.Img,
             'profile_lists': profile_lists,
             'content_lists': content_lists,
             'talk': cand.Talk
