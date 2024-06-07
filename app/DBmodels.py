@@ -3,8 +3,8 @@ from app import db
 class User(db.Model):
     UID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Code = db.Column(db.Integer)
-    Address = db.Column(db.String(300))
-    Salt = db.Column(db.String(300))
+    Address = db.Column(db.Text)
+    Salt = db.Column(db.Text)
     Dep = db.Column(db.String(300))
     UType = db.Column(db.Integer)
  

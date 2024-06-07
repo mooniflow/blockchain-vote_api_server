@@ -4,6 +4,6 @@ class Config:
     DEBUG = True
     BASE_DIR = os.path.dirname(__file__)
 
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(os.path.join(BASE_DIR, 'pybo.db'))
+    SQLALCHEMY_DATABASE_URI = 'mysql://admin:It12345!@47.128.242.146/voteDB'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
